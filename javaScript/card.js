@@ -123,9 +123,9 @@ const displayIssues = (issues) => {
                 </div>
 
                 <!-- Assignee info -->
-                <div class="flex justify-between p-1">
+                <div class="grid md:grid-cols-2 justify-between p-1">
                     <h3 class="opacity-70">${issue.assignee}</h3>
-                    <p class="opacity-70">Updated: ${issue.updatedAt}</p>
+                    <p class=" opacity-70">Updated: ${issue.updatedAt}</p>
                 </div>
             </div>
         `;
