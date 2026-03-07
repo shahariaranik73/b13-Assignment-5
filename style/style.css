@@ -11,7 +11,7 @@ body {
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    background: #3d5257; 
+    background: #1a2325; 
 }
 
 .login-box {
@@ -130,20 +130,4 @@ form {
 
 .btn:active {
     opacity: 0.8;
-}
-
-.links {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 20px;
-}
-
-.links a {
-    font-size: 0.75em;
-    color: #8f8f8f;
-    text-decoration: none;
-}
-
-.links a:hover {
-    color: #45f3ff;
 }
