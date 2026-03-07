@@ -23,24 +23,18 @@
                 <p class="message">Sign in to manage your issues</p>
             </div>
             <div class="input-group">
-                <input type="text" required>
+                <input id="username" type="text" required>
                 <label>Username</label>
             </div>
             <div class="input-group">
-                <input type="password" required>
+                <input id="password" type="password" required>
                 <label>Password</label>
             </div>
-            <button type="submit" class="btn">Sign In</button>
+            <button type="submit" id="btn-login" class="btn">Sign In</button>
             
         </form>
     </div>
     
-    <script>
-    const button = document.querySelector('.btn');
-    button.addEventListener('click', (e) => {
-        e.preventDefault();
-        alert('Login Successful!');
-    });
-</script>
+    <script src="javaScript/login.js"></script>
 </body>
 </html>
