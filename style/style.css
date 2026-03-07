@@ -1,0 +1,149 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: #3d5257; 
+}
+
+.login-box {
+    position: relative;
+    width: 400px;
+    height: 500px;
+    background: #1c1c1c;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.login-box::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 380px;
+    height: 450px;
+    background: linear-gradient(0deg, transparent, #45f3ff, #45f3ff);
+    transform-origin: bottom right;
+    animation: animate 6s linear infinite;
+}
+
+.login-box::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 400px;
+    height: 500px;
+    background: linear-gradient(0deg, transparent, #ff2770, #ff2770);
+    transform-origin: bottom right;
+    animation: animate 6s linear infinite;
+    animation-delay: -3s; /* 2nd light */
+}
+
+/* Animation*/
+@keyframes animate {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+
+form {
+    position: absolute;
+    inset: 4px; 
+    background: rgb(64, 82, 90);
+    border-radius: 8px;
+    z-index: 10;
+    padding: 50px 40px;
+    display: flex;
+    flex-direction: column;
+}
+
+.login-words {
+    color: white;
+    font-weight: 550;
+    text-align: center;
+    letter-spacing: 0.1em;
+    margin-top: 5px;
+}
+.message{
+    color : white;
+    text-align: center;
+    font-size: 14px;
+    opacity: 0.8;
+    margin: 3px;
+}
+
+
+.input-group {
+    position: relative;
+    width: 300px;
+    margin-top: 35px;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 10px 0 5px;
+    background: transparent;
+    /* border:2px ;
+    outline: 2px;  */
+    color: #fff;
+    font-size: 1em;
+    letter-spacing: 0.05em;
+    border-bottom: 2px solid #45f3ff;
+}
+
+.input-group label {
+    position: absolute;
+    left: 0;
+    padding: 10px 0 5px;
+    color: #8f8f8f;
+    pointer-events: none;
+    transition: 0.5s;
+}
+
+.input-group input:focus ~ label,
+.input-group input:valid ~ label {
+    color: #45f3ff;
+    transform: translateY(-34px);
+    font-size: 0.75em;
+}
+
+.btn {
+    border: none;
+    outline: none;
+    background: #45f3ff;
+    padding: 10px;
+    width: 100px;
+    margin-top: 20px;
+    border-radius: 4px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.btn:active {
+    opacity: 0.8;
+}
+
+.links {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.links a {
+    font-size: 0.75em;
+    color: #8f8f8f;
+    text-decoration: none;
+}
+
+.links a:hover {
+    color: #45f3ff;
+}

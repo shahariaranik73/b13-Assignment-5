@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+        <!-- Tailwind connect -->
+        <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+
+    <!-- css Style -->
+    <link rel="stylesheet" href="style/style.css">
+</head>
+<body>
+    
+     <div class="login-box">
+        <form>
+            <div class="headSection">
+                <div class="flex justify-center">
+                    <img src="assets/github-logo.png" >
+                </div>
+                <h2 class="login-words">GitHub Issues Tracker</h2>
+                <p class="message">Sign in to manage your issues</p>
+            </div>
+            <div class="input-group">
+                <input type="text" required>
+                <label>Username</label>
+            </div>
+            <div class="input-group">
+                <input type="password" required>
+                <label>Password</label>
+            </div>
+            <button type="submit" class="btn">Sign In</button>
+            
+        </form>
+    </div>
+    
+    <script>
+    const button = document.querySelector('.btn');
+    button.addEventListener('click', (e) => {
+        e.preventDefault();
+        alert('Login Successful!');
+    });
+</script>
+</body>
+</html>
