@@ -16,6 +16,10 @@
     <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
 
+    <!-- font Awosame -->
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
+
     <style>
         * {
             background-color: #F8FAFC;
@@ -55,17 +59,28 @@
         <!-- All button section -->
         <section class="w-11/12 mx-auto shadow-md p-8 bg-white mb-5">
 
-            <button id="all-btn" class="btn btn-soft btn-primary hover:text-black">All</button>
-            <button id="open-btn" class="btn btn-soft btn-primary hover:text-black">Open</button>
-            <button id="close-btn" class="btn btn-soft btn-primary hover:text-black">Closed</button>
+            <!-- <button id="all-btn" onclick="setActive(this)" class="btn !bg-blue-600 text-white">All</button>
+            <button id="open-btn" onclick="setActive(this)" class="btn bg-gray-200">Open</button>
+            <button id="close-btn" onclick="setActive(this)" class="btn bg-gray-200">Closed</button> -->
 
+             <button id="all-btn" onclick="filterIssues('all'); setActive(this)" class="btn !bg-blue-600 text-white">
+            All
+        </button>
+
+        <button id="open-btn" onclick="filterIssues('open'); setActive(this)" class="btn bg-gray-200">
+            Open
+        </button>
+
+        <button id="close-btn" onclick="filterIssues('closed'); setActive(this)" class="btn bg-gray-200">
+            Closed
+        </button>
         </section>
 
         <!-- status show -->
         <section id="statusCount" class="w-11/12 mx-auto p-6 shadow-lg flex justify-between">
             <div class="flex align-middle items-center gap-3">
                 <img src="assets/Aperture.png" alt="">
-                <h2 class="font-bold text-2xl"><span id="all-issu">50</span> Issues</h2>
+                <h2 class="font-bold text-2xl"><span id="all-issu">0</span> Issues</h2>
             </div>
 
             <!-- OPEN CLOSE Indicator color -->
@@ -86,28 +101,6 @@
         <!-- issue Container -->
         <section id="issue-container" class="w-11/12 mx-auto mt-3 grid md:grid-cols-3 gap-4">
 
-            <div class="space-y-4 p-4">
-                <!-- priority head -->
-                <div class="flex justify-end p-4"><span class="rounded-full border-2 border-amber-400 px-3 py-1">priority</span></div>
-
-                <h2 class="text-2xl font-semibold">Title</h2>
-
-                <p class="text[#64748B10]">Lorem ipsum dolor sit amet.</p>
-                <div class="flex gap-2 mb-2.5">
-                    <p class="!bg-amber-300 text-black rounded p-1 text-center">Hello </p>
-                    <p class="!bg-amber-300 text-black rounded p-1 text-center">Hello </p>
-                </div>
-                <hr class="opacity-10">
-                <!-- author info -->
-                <div class="flex justify-between p-1">
-                    <h3 class="opacity-70">Athor</h3>
-                    <p class="opacity-70">createdAt</p>
-                </div>
-                <div class="flex justify-between p-1">
-                    <h3 class="opacity-70">Assing</h3>
-                    <p class="opacity-70">updatedAt</p>
-                </div>
-            </div>
 
         </section>
 
