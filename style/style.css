@@ -55,7 +55,7 @@ body {
 }
 
 
-form {
+section {
     position: absolute;
     inset: 4px; 
     background: rgb(64, 82, 90);

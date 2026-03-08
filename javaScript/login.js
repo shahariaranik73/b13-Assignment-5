@@ -2,7 +2,7 @@
 
 document.getElementById("btn-login").addEventListener('click', function (event) {
 
-    event.preventDefault();
+    // event.preventDefault();
     const inputUsername = document.getElementById('username');
     const username = inputUsername.value;
 
@@ -15,13 +15,20 @@ document.getElementById("btn-login").addEventListener('click', function (event) 
     // console.log(password)
     if (username==="admin" && password==="admin123"){
 
-        alert("Log in Success");
+        document.getElementById("my_modal_6").showModal();
 
-         window.location.assign("home.html");
+        // alert("Log in Success");
+
+         setTimeout(() => {
+            window.location.assign("home.html");
+        }, 500);
+
+        //  window.location.assign("home.html");
         // window.location.assign("/home.html")
     }
     else{
-        alert ("Your Info invalid")
+        // alert ("Your Info invalid")
+        document.getElementById("my_modal_5").showModal();
     }
 
     

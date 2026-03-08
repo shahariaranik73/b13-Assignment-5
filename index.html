@@ -1,23 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
-        <!-- Tailwind connect -->
-        <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <!-- Tailwind connect -->
+    <!-- <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script> -->
 
+    <!-- daisyui -->
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
 
     <!-- css Style -->
     <link rel="stylesheet" href="style/style.css">
 </head>
+
 <body>
-    
-     <div class="login-box">
-        <form>
+
+    <div class="login-box">
+        <section>
             <div class="headSection">
                 <div class="flex justify-center">
-                    <img src="assets/github-logo.png" >
+                    <img src="assets/github-logo.png">
                 </div>
                 <h2 class="login-words">GitHub Issues Tracker</h2>
                 <p class="message">Sign in to manage your issues</p>
@@ -31,10 +36,40 @@
                 <label>Password</label>
             </div>
             <button type="submit" id="btn-login" class="btn">Sign In</button>
-            
-        </form>
+
+        </section>
+
+        <!-- Open the modal using ID.showModal() method -->
+
+        <!-- Success Modal -->
+        <dialog id="my_modal_6" class="modal">
+            <div class="modal-box flex justify-center items-center h-40 bg-[#81ace0]">
+                <h3 class="text-lg font-bold text-black text-center">Login Success!</h3>
+                </div>
+            </div>
+        </dialog>
+
+        <!-- Invalid Modal -->
+        <!-- Open the modal using ID.showModal() method -->
+        <dialog id="my_modal_5" class="modal">
+            <div class="modal-box text-center space-y-4 p-4 bg-[#c8ddf6]">
+
+                <h3 class="text-lg font-bold">Invalid Login!</h3>
+
+                <p class="py-2">Username: admin</p>
+                <p class="py-2">Password: admin123</p>
+
+                <div class="modal-action justify-center">
+                    <form method="dialog">
+                        <button class="btn btn-error">Close</button>
+                    </form>
+                </div>
+
+            </div>
+        </dialog>
     </div>
-    
+
     <script src="javaScript/login.js"></script>
 </body>
+
 </html>
