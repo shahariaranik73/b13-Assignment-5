@@ -74,7 +74,7 @@ const displayIssues = (issues) => {
 
         if (issue.status === "open") {
             borderColor = "border-green-600";
-        } 
+        }
         else if (issue.status === "closed") {
             borderColor = "border-purple-600";
         }
@@ -90,10 +90,10 @@ const displayIssues = (issues) => {
         }
 
         div.innerHTML = ` 
-            <div id="${issue.id}" class="space-y-4 p-4 shadow-md rounded-2xl h-full border-t-4 ${borderColor}">
+            <div id="${issue.id}" onclick="loadCardDetail(${issue.id})" class="space-y-4 p-3 shadow-md rounded-2xl h-full border-t-4 ${borderColor}">
                 
                 <!-- Priority badge -->
-                <div class="flex justify-end p-4">
+                <div class="flex justify-end p-2">
                     <span class="rounded-full border-2 px-3 py-1 ${bg_Color}">
                         ${issue.priority}
                     </span>
@@ -108,7 +108,7 @@ const displayIssues = (issues) => {
                 <!-- Labels -->
                 <div class="flex gap-2 mb-2.5 flex-wrap">
                     ${issue.labels.map(label => `
-                        <span class="!bg-amber-200 text-black rounded px-2 py-1 text-sm">
+                        <span class="bg-amber-200 text-black rounded px-2 py-1 text-sm">
                             ${label}
                         </span>
                     `).join('')}
@@ -132,4 +132,25 @@ const displayIssues = (issues) => {
 
         container.appendChild(div);
     });
+}
+
+const loadCardDetail = async (id) => {
+    const url = `https://phi-lab-server.vercel.app/api/v1/lab/issue/${id}`;
+    
+    const res = await fetch(url);
+    const details = await res.json();
+
+    displayCardDetails(details.data)
+    // console.log(details)
+}
+
+const displayCardDetails = (word) =>{
+
+
+    console.log(word)
+    const cardBox = document.getElementById("card-modalContainer");
+    
+    // cardBox.innerHTML= " Hi Me is Anik from JS"
+
+    document.getElementById("my_modal_5").showModal()
 }

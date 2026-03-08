@@ -21,14 +21,13 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
 
     <style>
-        * {
-            background-color: #F8FAFC;
-        }
+        
 
         .geist {
             font-family: "Geist", sans-serif;
             font-optical-sizing: auto;
         }
+
     </style>
 </head>
 
@@ -63,17 +62,17 @@
             <button id="open-btn" onclick="setActive(this)" class="btn bg-gray-200">Open</button>
             <button id="close-btn" onclick="setActive(this)" class="btn bg-gray-200">Closed</button> -->
 
-             <button id="all-btn" onclick="filterIssues('all'); setActive(this)" class="btn !bg-blue-600 text-white">
-            All
-        </button>
+            <button id="all-btn" onclick="filterIssues('all'); setActive(this)" class="btn bg-blue-600 text-white">
+                All
+            </button>
 
-        <button id="open-btn" onclick="filterIssues('open'); setActive(this)" class="btn bg-gray-200">
-            Open
-        </button>
+            <button id="open-btn" onclick="filterIssues('open'); setActive(this)" class="btn bg-gray-200">
+                Open
+            </button>
 
-        <button id="close-btn" onclick="filterIssues('closed'); setActive(this)" class="btn bg-gray-200">
-            Closed
-        </button>
+            <button id="close-btn" onclick="filterIssues('closed'); setActive(this)" class="btn bg-gray-200">
+                Closed
+            </button>
         </section>
 
         <!-- status show -->
@@ -87,11 +86,11 @@
 
             <div class="flex gap-3 align-middle items-center">
                 <div class="flex gap-2">
-                    <div class="w-5 h-5 !bg-green-600 rounded-full"></div>
+                    <div class="w-5 h-5 bg-green-600 rounded-full"></div>
                     <h2 class="font-semibold">Open</h2>
                 </div>
                 <div class="flex gap-2">
-                    <div class="w-5 h-5 !bg-purple-600 rounded-full"></div>
+                    <div class="w-5 h-5 bg-purple-600 rounded-full"></div>
                     <h2 class="font-semibold">Closed</h2>
                 </div>
             </div>
@@ -99,10 +98,29 @@
         </section>
 
         <!-- issue Container -->
-        <section id="issue-container" class="w-11/12 mx-auto mt-3 grid md:grid-cols-3 gap-4">
+        <section id="issue-container" class="w-11/12 mx-auto mt-3 grid md:grid-cols-3 lg:grid-cols-4 gap-4">
 
 
         </section>
+
+        <!-- Open the modal using ID.showModal() method -->
+
+        <!-- <button class="btn" onclick="my_modal_5.showModal()">open modal</button> -->
+
+        <dialog id="my_modal_5" class="modal modal-bottom sm:modal-middle">
+            <div class="modal-box">
+                <div id="card-modalContainer">
+
+                </div>
+                <div class="modal-action">
+                    <form method="dialog">
+                        <!-- if there is a button in form, it will close the modal -->
+                        <button class="btn">Close</button>
+                    </form>
+                </div>
+            </div>
+        </dialog>
+
 
     </main>
 
