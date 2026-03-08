@@ -92,12 +92,16 @@ section {
     width: 100%;
     padding: 10px 0 5px;
     background: transparent;
-    /* border:2px ;
-    outline: 2px;  */
+    border:2px ;
+    outline: 2px; 
     color: #fff;
     font-size: 1em;
     letter-spacing: 0.05em;
     border-bottom: 2px solid #45f3ff;
+}
+.input-group input:focus {
+    outline: 1px solid #78b8bd;
+    outline-offset: 3px;
 }
 
 .input-group label {
