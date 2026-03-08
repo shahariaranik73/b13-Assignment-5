@@ -1,19 +1,36 @@
 
 let allIssues = [];
 
+// spinner run 
+
+const manageSpinner= (status)=>{
+    if(status==true){
+        document.getElementById("spinner").classList.remove("hidden");
+        document.getElementById("issue-container").classList.add("hidden");
+    }
+    else{
+
+        document.getElementById("issue-container").classList.remove("hidden");
+        document.getElementById("spinner").classList.add("hidden");
+
+    }
+}
+
 
 const loadIssue = () => {
+    manageSpinner(true);
+
     fetch("https://phi-lab-server.vercel.app/api/v1/lab/issues")
         .then((res) => res.json())
         .then(data => {
-
             allIssues = data.data;
-
 
             displayIssues(allIssues);
 
-
             updateIssueCount(allIssues.length);
+        })
+        .finally(() => {
+            manageSpinner(false);
         });
 }
 
@@ -26,14 +43,13 @@ function setActive(btn) {
     const buttons = document.querySelectorAll(".btn");
 
     buttons.forEach(b => {
-        b.classList.remove("!bg-blue-600", "text-white");
-        b.classList.add("!bg-gray-200");
+        b.classList.remove("bg-blue-600", "text-white");
+        b.classList.add("bg-gray-200");
     });
 
-    btn.classList.remove("!bg-gray-200");
-    btn.classList.add("!bg-blue-600", "text-white");
+    btn.classList.remove("bg-gray-200");
+    btn.classList.add("bg-blue-600", "text-white");
 }
-
 
 
 function updateIssueCount(count) {
@@ -42,8 +58,8 @@ function updateIssueCount(count) {
 
 
 function filterIssues(status) {
-    let filteredIssues = [];
 
+    let filteredIssues = [];
 
     if (status === "all") {
         filteredIssues = allIssues;
@@ -65,6 +81,24 @@ const displayIssues = (issues) => {
     const container = document.getElementById("issue-container");
 
     container.innerHTML = "";
+
+ // no result sms
+    if (issues.length === 0) {
+
+        container.innerHTML = `
+            <div class="col-span-full text-center py-20">
+                <h2 class="text-2xl font-semibold text-red-500">
+                    No Result Found
+                </h2>
+                <p class="opacity-60 mt-2">
+                    Try searching with another keyword
+                </p>
+            </div>
+        `;
+
+        return;
+    }
+
 
     issues.forEach(issue => {
         const div = document.createElement('div');
@@ -90,7 +124,7 @@ const displayIssues = (issues) => {
         }
 
         div.innerHTML = ` 
-            <div id="${issue.id}" onclick="loadCardDetail(${issue.id})" class="space-y-4 p-3 shadow-lg rounded-2xl h-full border-t-4 ${borderColor}">
+            <div id="${issue.id}" onclick="loadCardDetail(${issue.id})" class="space-y-4 p-3 shadow-lg rounded-2xl h-full hover:scale-105 hover:shadow-xl transition-all duration-300 bg-[#eaeff5] border-t-5 ${borderColor}">
                 
                 <!-- Priority badge -->
                 <div class="flex justify-end p-2">
@@ -117,21 +151,23 @@ const displayIssues = (issues) => {
                 <hr class="opacity-10">
 
                 <!-- Author info -->
-                <div class="flex justify-between p-1">
+                <div class="flex justify-between  p-1">
                     <h3 class="opacity-70">Added by: ${issue.author}</h3>
                     <p class="opacity-70">${issue.createdAt}</p>
                 </div>
 
-                <!-- Assignee info -->
+                <!-- Assignee info 
                 <div class="grid md:grid-cols-2 justify-between p-1">
                     <h3 class="opacity-70">${issue.assignee}</h3>
                     <p class=" opacity-70">Updated: ${issue.updatedAt}</p>
-                </div>
+                </div> -->
             </div>
         `;
 
         container.appendChild(div);
     });
+
+    // manageSpinner(false)
 }
 
 const loadCardDetail = async (id) => {
@@ -159,7 +195,7 @@ const displayCardDetails = (word) => {
             bgColor ="bg-purple-600 text-white";
         }
 
-    // color effect
+    // color priority effect
 
      if (word.priority === "high") {
             bg_Color = "bg-red-600 text-white";
@@ -206,3 +242,38 @@ const displayCardDetails = (word) => {
 
     document.getElementById("my_modal_5").showModal()
 }
+
+
+// search filed 
+document.getElementById("btn-search").addEventListener('click', async () => {
+
+    const input = document.getElementById("input-search");
+    const searchValue = input.value.trim().toLowerCase();
+
+    // spinner Manageer dekhanor jonno
+    manageSpinner(true);
+
+    try {
+
+        const url = `https://phi-lab-server.vercel.app/api/v1/lab/issues/search?q=${searchValue}`;
+
+        const res = await fetch(url);
+        const data = await res.json();
+
+        const issues = data.data;
+
+        
+        displayIssues(issues);
+
+        updateIssueCount(issues.length);
+
+    }
+    catch(error){
+        console.log("Search Error:", error);
+    }
+
+    finally{
+        manageSpinner(false);
+    }
+
+});
